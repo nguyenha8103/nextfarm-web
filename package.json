@@ -1,0 +1,40 @@
+{
+  "name": "nextfarm-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
+    "@tanstack/react-query": "^5.90.6",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "ky": "^1.12.0",
+    "lucide-react": "^0.468.0",
+    "maplibre-gl": "^4.7.1",
+    "next": "^15.5.6",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-hook-form": "^7.65.0",
+    "recharts": "^3.3.0",
+    "styled-jsx": "^5.1.7",
+    "tailwind-merge": "^3.3.1",
+    "zod": "^4.1.12",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.15",
+    "@types/node": "^24.9.1",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "eslint": "^9.38.0",
+    "eslint-config-next": "^15.5.6",
+    "tailwindcss": "^4.1.15",
+    "typescript": "^5.9.3"
+  }
+}
