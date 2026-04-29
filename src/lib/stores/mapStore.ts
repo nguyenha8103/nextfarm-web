@@ -11,8 +11,8 @@ interface MapState {
 }
 
 export const useMapStore = create<MapState>((set) => ({
-  center: [108.437, 11.94],
-  zoom: 9,
+  center: [108.2772, 14.0583],
+  zoom: 6,
   selectedParcelId: null,
   visibleLayers: ['parcels', 'zones'],
   setCenter: (center) => set({ center }),
