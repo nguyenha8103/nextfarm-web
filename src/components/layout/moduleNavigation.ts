@@ -1,7 +1,9 @@
 import {
+  BarChart3,
   Bell,
   Bot,
   CalendarDays,
+  Camera,
   ClipboardList,
   Cpu,
   FileText,
@@ -14,7 +16,9 @@ import {
   Settings,
   Settings2,
   Shield,
+  ShieldCheck,
   Sprout,
+  Sparkles,
   UsersRound,
   Waves,
   Wheat,
@@ -25,7 +29,7 @@ import {
 
 export type UserRole = 'owner' | 'admin' | 'farm_manager' | 'field_worker';
 
-export type ModuleId = 'iam' | 'gis' | 'process' | 'harvest' | 'iot' | 'ai';
+export type ModuleId = 'iam' | 'gis' | 'process' | 'harvest' | 'iot' | 'ai' | 'reports';
 
 export type NavItem = {
   href: string;
@@ -132,12 +136,33 @@ export const modules: ModuleConfig[] = [
     id: 'ai',
     label: 'AI',
     shortLabel: 'AI',
-    href: '/ai/chat/',
+    href: '/ai/assistant/',
     permission: 'ai.chat.use',
     roles: allRoles,
     icon: Bot,
     nav: [
-      { href: '/ai/chat/', label: 'Trợ lý AI', permission: 'ai.chat.use', roles: allRoles, icon: Bot },
+      { href: '/ai/assistant/', label: 'Trợ lý AI', permission: 'ai.chat.use', roles: allRoles, icon: Bot },
+      { href: '/ai/pest-detection/', label: 'Nhận diện sâu bệnh', permission: 'ai.pest_detection.use', roles: allRoles, icon: Camera },
+      { href: '/ai/process-plan/', label: 'Tạo quy trình', permission: 'ai.process_plan.generate', roles: managerRoles, icon: Sparkles },
+      { href: '/ai/yield-forecast/', label: 'Dự báo sản lượng', permission: 'ai.yield_forecast.view', roles: managerRoles, icon: BarChart3 },
+      { href: '/ai/usage/', label: 'Theo dõi sử dụng', permission: 'ai.usage.view', roles: adminRoles, icon: ShieldCheck },
+    ],
+  },
+  {
+    id: 'reports',
+    label: 'Báo cáo',
+    shortLabel: 'RPT',
+    href: '/reports/',
+    permission: 'report.zone_summary.view',
+    roles: managerRoles,
+    icon: FileText,
+    nav: [
+      { href: '/reports/', label: 'Danh mục báo cáo', permission: 'report.zone_summary.view', roles: managerRoles, icon: FileText },
+      { href: '/reports/zone-summary/', label: 'Tổng hợp vùng', permission: 'report.zone_summary.view', roles: managerRoles, icon: Grid2X2 },
+      { href: '/reports/compliance/', label: 'Tuân thủ', permission: 'report.compliance.view', roles: adminRoles, icon: ShieldCheck },
+      { href: '/reports/yield/', label: 'Sản lượng', permission: 'report.yield.view', roles: adminRoles, icon: BarChart3 },
+      { href: '/reports/ndvi-trend/', label: 'Xu hướng NDVI', permission: 'report.ndvi.view', roles: managerRoles, icon: Waves },
+      { href: '/reports/schedules/', label: 'Lịch tự động', permission: 'report.schedule.manage', roles: adminRoles, icon: CalendarDays },
     ],
   },
 ];
