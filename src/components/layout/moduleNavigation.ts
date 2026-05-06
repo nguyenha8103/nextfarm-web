@@ -8,6 +8,7 @@ import {
   Cpu,
   FileText,
   Grid2X2,
+  ShoppingCart,
   Layers3,
   Map,
   PackageCheck,
@@ -29,7 +30,7 @@ import {
 
 export type UserRole = 'owner' | 'admin' | 'farm_manager' | 'field_worker';
 
-export type ModuleId = 'iam' | 'gis' | 'process' | 'harvest' | 'iot' | 'ai' | 'reports';
+export type ModuleId = 'iam' | 'gis' | 'process' | 'harvest' | 'iot' | 'ai' | 'marketplace' | 'reports';
 
 export type NavItem = {
   href: string;
@@ -146,6 +147,20 @@ export const modules: ModuleConfig[] = [
       { href: '/ai/process-plan/', label: 'Tạo quy trình', permission: 'ai.process_plan.generate', roles: managerRoles, icon: Sparkles },
       { href: '/ai/yield-forecast/', label: 'Dự báo sản lượng', permission: 'ai.yield_forecast.view', roles: managerRoles, icon: BarChart3 },
       { href: '/ai/usage/', label: 'Theo dõi sử dụng', permission: 'ai.usage.view', roles: adminRoles, icon: ShieldCheck },
+    ],
+  },
+  {
+    id: 'marketplace',
+    label: 'Marketplace',
+    shortLabel: 'MKT',
+    href: '/marketplace/',
+    permission: 'marketplace.products.view',
+    roles: allRoles,
+    icon: ShoppingCart,
+    nav: [
+      { href: '/marketplace/', label: 'Sản phẩm', permission: 'marketplace.products.view', roles: allRoles, icon: ShoppingCart },
+      { href: '/marketplace/cart/', label: 'Giỏ hàng', permission: 'marketplace.cart.view', roles: allRoles, icon: ShoppingCart },
+      { href: '/marketplace/orders/', label: 'Lịch sử đơn hàng', permission: 'marketplace.orders.view', roles: allRoles, icon: FileText },
     ],
   },
   {
