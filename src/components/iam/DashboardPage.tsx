@@ -17,6 +17,7 @@ import {
   UsersRound,
 } from 'lucide-react';
 import { IamSubsystemSwitcher } from './IamSubsystemSwitcher';
+import { HeaderNotificationButton } from '@/components/notification/HeaderNotificationButton';
 
 const workspaces = [
   {
@@ -173,7 +174,7 @@ export function DashboardPage() {
       </aside>
 
       <section className="min-h-[555px] pl-[256px]">
-        <header className={`flex h-[49px] items-center justify-between border-b px-[27px] ${surface}`}>
+        <header className={`sticky top-0 z-[70] flex h-[49px] items-center justify-between border-b px-[27px] ${surface}`}>
           <div className="relative">
             <button
               className={`flex min-w-[255px] items-center gap-2 rounded-lg px-2 py-1 text-left transition ${dark ? 'hover:bg-[#1f2937]' : 'hover:bg-slate-50'}`}
@@ -196,7 +197,7 @@ export function DashboardPage() {
             </button>
 
             {workspaceOpen ? (
-              <div className={`absolute left-0 top-[42px] z-30 w-[286px] rounded-xl border p-2 shadow-md ${surface}`}>
+              <div className={`absolute left-0 top-[42px] z-[90] w-[286px] rounded-xl border p-2 shadow-md ${surface}`}>
                 <p className={`px-2 pb-2 text-[11px] font-medium ${muted}`}>Chuyển workspace</p>
                 <div className="grid gap-1">
                   {workspaces.map((item) => (
@@ -239,6 +240,8 @@ export function DashboardPage() {
               {dark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
 
+            <HeaderNotificationButton dark={dark} />
+
             <div className="relative">
               <button
                 aria-label="Tài khoản"
@@ -253,7 +256,7 @@ export function DashboardPage() {
               </button>
 
               {profileOpen ? (
-                <div className={`absolute right-0 top-[36px] z-30 w-[210px] rounded-xl border p-2 shadow-md ${surface}`}>
+                <div className={`absolute right-0 top-[36px] z-[90] w-[210px] rounded-xl border p-2 shadow-md ${surface}`}>
                   <div className={`border-b px-2 pb-2 ${divider}`}>
                     <p className="text-xs font-semibold">Admin Nextfarm</p>
                     <p className={`mt-1 text-[10px] ${muted}`}>admin@nextfarm.vn</p>

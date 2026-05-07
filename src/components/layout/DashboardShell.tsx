@@ -116,7 +116,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className={`min-h-screen ${dark ? 'bg-[#0b1120] text-white' : 'bg-slate-50 text-slate-900'}`}>
-      <aside className={`fixed left-0 top-0 h-screen w-[256px] border-r px-3 py-4 transition-opacity duration-200 ${dark ? 'border-[#263244] bg-[#111827]' : 'border-slate-200/60 bg-slate-50'}`}>
+      <aside className={`fixed left-0 top-0 z-50 h-screen w-[256px] border-r px-3 py-4 transition-opacity duration-200 ${dark ? 'border-[#263244] bg-[#111827]' : 'border-slate-200/60 bg-slate-50'}`}>
         <div className="flex items-center gap-2 px-2">
           <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-600 text-xs font-semibold text-white">
             N
@@ -169,7 +169,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
         </nav>
       </aside>
       <section className="min-h-screen pl-[256px]">
-        <header className={`flex h-[45px] items-center justify-between border-b px-5 ${dark ? surface : 'border-slate-200/60 bg-white/90 backdrop-blur'}`}>
+        <header className={`sticky top-0 z-[70] flex h-[45px] items-center justify-between border-b px-5 ${dark ? surface : 'border-slate-200/60 bg-white/90 backdrop-blur'}`}>
           <div className="relative">
             <button
               className={`flex min-w-[245px] items-center gap-2 rounded-lg px-2 py-1.5 text-left transition-all duration-150 ${dark ? 'hover:bg-[#1f2937]' : 'hover:bg-slate-100'}`}
@@ -192,7 +192,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
             </button>
 
             {workspaceOpen ? (
-              <div className={`absolute left-0 top-[42px] z-40 w-[286px] rounded-xl border p-2 shadow-md ${dark ? surface : 'border-slate-200/60 bg-white'}`}>
+              <div className={`absolute left-0 top-[42px] z-[90] w-[286px] rounded-xl border p-2 shadow-md ${dark ? surface : 'border-slate-200/60 bg-white'}`}>
                 <p className={`px-2 pb-2 text-[11px] font-medium uppercase tracking-wider ${muted}`}>Chuyển workspace</p>
                 <div className="grid gap-1">
                   {workspaces.map((item) => (
@@ -249,7 +249,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
               </button>
 
               {notificationOpen ? (
-                <div className={`absolute right-0 top-[38px] z-40 w-[360px] rounded-xl border p-2 shadow-md ${dark ? surface : 'border-slate-200/60 bg-white'}`}>
+                <div className={`absolute right-0 top-[38px] z-[100] w-[360px] rounded-xl border p-2 shadow-md ${dark ? surface : 'border-slate-200/60 bg-white'}`}>
                   <div className={`flex items-center justify-between border-b px-2 pb-2 ${dark ? 'border-[#263244]' : 'border-slate-200/60'}`}>
                     <div>
                       <p className="text-sm font-semibold">Thông báo</p>
@@ -302,7 +302,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
               </button>
 
               {profileOpen ? (
-                <div className={`absolute right-0 top-[36px] z-40 w-[210px] rounded-xl border p-2 shadow-md ${dark ? surface : 'border-slate-200/60 bg-white'}`}>
+                <div className={`absolute right-0 top-[36px] z-[90] w-[210px] rounded-xl border p-2 shadow-md ${dark ? surface : 'border-slate-200/60 bg-white'}`}>
                   <div className={`border-b px-2 pb-2 ${dark ? 'border-[#263244]' : 'border-slate-200/60'}`}>
                     <p className="text-xs font-semibold">Admin Nextfarm</p>
                     <p className={`mt-1 text-[10px] ${muted}`}>admin@nextfarm.vn</p>
@@ -320,7 +320,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
             </div>
           </div>
         </header>
-        <main className="relative min-h-[calc(100vh-45px)] transition-opacity duration-200">
+        <main className="relative z-0 min-h-[calc(100vh-45px)] transition-opacity duration-200">
           {loading ? <ContentSkeleton dark={dark} /> : children}
         </main>
       </section>

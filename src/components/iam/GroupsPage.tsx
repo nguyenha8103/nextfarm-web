@@ -20,6 +20,7 @@ import {
   X,
 } from 'lucide-react';
 import { IamSubsystemSwitcher } from './IamSubsystemSwitcher';
+import { HeaderNotificationButton } from '@/components/notification/HeaderNotificationButton';
 
 type Theme = 'light' | 'dark';
 type Tab = 'groups' | 'matrix';
@@ -350,7 +351,7 @@ export function GroupsPage() {
       </aside>
 
       <section className="min-h-screen pl-[256px]">
-        <header className={`flex h-[45px] items-center justify-between border-b px-[20px] ${surface}`}>
+        <header className={`sticky top-0 z-[70] flex h-[45px] items-center justify-between border-b px-[20px] ${surface}`}>
           <div className="relative">
             <button
               className={`flex min-w-[245px] items-center gap-2 rounded-lg px-2 py-1 text-left transition ${dark ? 'hover:bg-[#1f2937]' : 'hover:bg-slate-50'}`}
@@ -371,7 +372,7 @@ export function GroupsPage() {
             </button>
 
             {workspaceOpen ? (
-              <div className={`absolute left-0 top-[40px] z-30 w-[286px] rounded-xl border p-2 shadow-md ${surface}`}>
+              <div className={`absolute left-0 top-[40px] z-[90] w-[286px] rounded-xl border p-2 shadow-md ${surface}`}>
                 <p className={`px-2 pb-2 text-[11px] font-medium ${muted}`}>Chuyển workspace</p>
                 <div className="grid gap-1">
                   {workspaces.map((item) => (
@@ -398,6 +399,7 @@ export function GroupsPage() {
             <button className={`flex h-8 w-8 items-center justify-center rounded-full ${dark ? 'hover:bg-[#1f2937]' : 'hover:bg-slate-50'}`} onClick={toggleTheme} type="button">
               {dark ? <Sun size={17} /> : <Moon size={17} />}
             </button>
+            <HeaderNotificationButton dark={dark} />
             <div className="relative">
               <button
                 className="flex h-6 w-6 items-center justify-center rounded-full bg-[#009688] text-xs font-semibold text-white"
@@ -410,7 +412,7 @@ export function GroupsPage() {
                 A
               </button>
               {profileOpen ? (
-                <div className={`absolute right-0 top-[34px] z-30 w-[210px] rounded-xl border p-2 shadow-md ${surface}`}>
+                <div className={`absolute right-0 top-[34px] z-[90] w-[210px] rounded-xl border p-2 shadow-md ${surface}`}>
                   <div className={`border-b px-2 pb-2 ${divider}`}>
                     <p className="text-xs font-semibold">Admin Nextfarm</p>
                     <p className={`mt-1 text-[10px] ${muted}`}>admin@nextfarm.vn</p>
