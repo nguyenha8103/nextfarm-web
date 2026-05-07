@@ -320,7 +320,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
             </div>
           </div>
         </header>
-        <main className="relative z-0 min-h-[calc(100vh-45px)] transition-opacity duration-200">
+        <main className="relative min-h-[calc(100vh-45px)] transition-opacity duration-200">
           {loading ? <ContentSkeleton dark={dark} /> : children}
         </main>
       </section>
