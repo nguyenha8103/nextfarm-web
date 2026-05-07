@@ -8,7 +8,7 @@ export function Button({
   return (
     <button
       className={cn(
-        'inline-flex h-10 items-center justify-center rounded-md bg-[#236b4a] px-4 text-sm font-semibold text-white transition hover:bg-[#1d5b3f] disabled:cursor-not-allowed disabled:opacity-60',
+        'inline-flex h-10 items-center justify-center rounded-lg bg-emerald-600 px-4 text-sm font-medium text-white transition-all duration-150 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 disabled:cursor-not-allowed disabled:opacity-60',
         className,
       )}
       type={type}

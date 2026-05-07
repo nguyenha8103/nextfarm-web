@@ -19,7 +19,7 @@ const workspaces = [
     name: 'Công ty Nông sản Xanh',
     role: 'Quản trị viên',
     members: 8,
-    tone: 'text-[#16a34a]',
+    tone: 'text-emerald-600',
   },
 ];
 
@@ -37,27 +37,27 @@ export function WorkspacePage() {
     <main className="relative min-h-[555px] bg-gradient-to-br from-[#f4fbf6] via-white to-[#edf7fb] px-6 py-[74px]">
       <section className="mx-auto w-full max-w-[505px]">
         <div className="flex flex-col items-center">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#16a34a] text-xl font-extrabold text-white">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600 text-xl font-semibold text-white">
             N
           </div>
-          <h1 className="mt-3 text-center text-xl font-extrabold text-black">Chọn tổ chức</h1>
-          <p className="mt-1 text-center text-xs text-[#687084]">Chọn tổ chức bạn muốn làm việc</p>
+          <h1 className="mt-3 text-center text-xl font-semibold text-black">Chọn tổ chức</h1>
+          <p className="mt-1 text-center text-xs text-slate-500">Chọn tổ chức bạn muốn làm việc</p>
         </div>
 
         <div className="mt-[24px] grid gap-3">
           {workspaces.map((workspace) => (
             <button
-              className="flex h-[86px] items-center gap-3 rounded-lg border border-[#e0e1e5] bg-white px-[18px] text-left shadow-sm transition hover:border-[#16a34a] hover:shadow-md"
+              className="flex h-[86px] items-center gap-3 rounded-lg border border-[#e0e1e5] bg-white px-[18px] text-left  transition hover:border-emerald-600 hover:shadow-md"
               key={workspace.id}
               onClick={() => openWorkspace(workspace)}
               type="button"
             >
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#16a34a] text-lg font-extrabold text-white">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-lg font-semibold text-white">
                 {workspace.initial}
               </span>
               <span className="min-w-0 flex-1">
-                <span className="block truncate text-[14px] font-extrabold text-black">{workspace.name}</span>
-                <span className="mt-1 flex flex-wrap items-center gap-3 text-[11px] text-[#687084]">
+                <span className="block truncate text-[14px] font-semibold text-black">{workspace.name}</span>
+                <span className="mt-1 flex flex-wrap items-center gap-3 text-[11px] text-slate-500">
                   <span className="inline-flex items-center gap-1">
                     {workspace.id === 'binh-dien' ? <Crown className={workspace.tone} size={12} /> : <UserRoundCog className={workspace.tone} size={12} />}
                     {workspace.role}
@@ -73,7 +73,7 @@ export function WorkspacePage() {
           ))}
 
           <button
-            className="flex h-[86px] items-center gap-3 rounded-lg border border-dashed border-[#d8dce3] bg-white/80 px-[18px] text-left shadow-sm transition hover:border-[#16a34a]"
+            className="flex h-[86px] items-center gap-3 rounded-lg border border-dashed border-slate-200 bg-white/80 px-[18px] text-left  transition hover:border-emerald-600"
             onClick={() => setShowCreateForm((current) => !current)}
             type="button"
           >
@@ -81,14 +81,14 @@ export function WorkspacePage() {
               <Plus size={21} />
             </span>
             <span>
-              <span className="block text-[14px] font-extrabold text-black">Tạo tổ chức mới</span>
-              <span className="mt-1 block text-[12px] text-[#687084]">Bắt đầu với một workspace mới</span>
+              <span className="block text-[14px] font-semibold text-black">Tạo tổ chức mới</span>
+              <span className="mt-1 block text-[12px] text-slate-500">Bắt đầu với một workspace mới</span>
             </span>
           </button>
 
           {showCreateForm ? (
             <form
-              className="grid gap-3 rounded-lg border border-[#e0e1e5] bg-white p-4 shadow-sm"
+              className="grid gap-3 rounded-lg border border-[#e0e1e5] bg-white p-4 "
               onSubmit={(event) => {
                 event.preventDefault();
                 if (workspaceName.trim()) {
@@ -100,17 +100,17 @@ export function WorkspacePage() {
                       name: workspaceName.trim(),
                       role: 'Chủ sở hữu',
                       members: 1,
-                      tone: 'text-[#16a34a]',
+                      tone: 'text-emerald-600',
                     }),
                   );
                   router.push('/iam/');
                 }
               }}
             >
-              <label className="grid gap-2 text-xs font-bold text-black">
+              <label className="grid gap-2 text-xs font-medium text-black">
                 Tên workspace
                 <input
-                  className="h-10 rounded-md border border-[#d0d4dc] px-3 text-sm outline-none focus:border-[#16a34a]"
+                  className="h-10 rounded-lg border border-[#d0d4dc] px-3 text-sm outline-none focus:border-emerald-600"
                   onChange={(event) => setWorkspaceName(event.target.value)}
                   placeholder="VD: HTX Nông nghiệp mới"
                   value={workspaceName}
@@ -118,13 +118,13 @@ export function WorkspacePage() {
               </label>
               <div className="flex justify-end gap-2">
                 <button
-                  className="h-9 rounded-md border border-[#d9dce3] px-4 text-xs font-bold text-[#4b5563]"
+                  className="h-9 rounded-lg border border-[#d9dce3] px-4 text-xs font-medium text-slate-600"
                   onClick={() => setShowCreateForm(false)}
                   type="button"
                 >
                   Hủy
                 </button>
-                <button className="h-9 rounded-md bg-[#16a34a] px-4 text-xs font-bold text-white" type="submit">
+                <button className="h-9 rounded-lg bg-emerald-600 px-4 text-xs font-medium text-white" type="submit">
                   Tạo workspace
                 </button>
               </div>
@@ -135,7 +135,7 @@ export function WorkspacePage() {
 
       <button
         aria-label="Trợ giúp"
-        className="absolute bottom-3 right-3 flex h-7 w-7 items-center justify-center rounded-full border border-[#e2e2e2] bg-white text-lg text-[#4b5563] shadow-sm"
+        className="absolute bottom-3 right-3 flex h-7 w-7 items-center justify-center rounded-full border border-[#e2e2e2] bg-white text-lg text-slate-600 "
         type="button"
       >
         ?

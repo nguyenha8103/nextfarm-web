@@ -1,14 +1,35 @@
 @import 'tailwindcss';
 @import 'maplibre-gl/dist/maplibre-gl.css';
 
+@theme {
+  --font-sans: var(--font-inter), Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --color-brand: #16a34a;
+  --color-app: #f8fafc;
+  --color-card: #ffffff;
+  --color-border-subtle: rgb(226 232 240 / 0.6);
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94a3b8;
+  --color-active-bg: #ecfdf5;
+  --color-active-text: #047857;
+
+  --radius-control: 0.5rem;
+  --radius-card: 0.75rem;
+  --radius-modal: 1rem;
+}
+
 :root {
   color-scheme: light;
-  --background: #f7f9f6;
-  --foreground: #17211b;
-  --muted: #66736b;
-  --border: #dbe3dc;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --text-secondary: #475569;
+  --muted: #94a3b8;
+  --border: rgb(226 232 240 / 0.6);
   --surface: #ffffff;
-  --primary: #236b4a;
+  --primary: #16a34a;
+  --active-background: #ecfdf5;
+  --active-foreground: #047857;
   --primary-foreground: #ffffff;
 }
 
@@ -25,7 +46,7 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), Inter, Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 

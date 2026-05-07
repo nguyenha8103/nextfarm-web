@@ -8,6 +8,9 @@ import {
   Cpu,
   FileText,
   Grid2X2,
+  CircleHelp,
+  Newspaper,
+  MessageSquare,
   ShoppingCart,
   Layers3,
   Map,
@@ -30,7 +33,7 @@ import {
 
 export type UserRole = 'owner' | 'admin' | 'farm_manager' | 'field_worker';
 
-export type ModuleId = 'iam' | 'gis' | 'process' | 'harvest' | 'iot' | 'ai' | 'marketplace' | 'reports';
+export type ModuleId = 'iam' | 'gis' | 'process' | 'harvest' | 'iot' | 'ai' | 'marketplace' | 'news' | 'forum' | 'faq' | 'reports';
 
 export type NavItem = {
   href: string;
@@ -161,6 +164,42 @@ export const modules: ModuleConfig[] = [
       { href: '/marketplace/', label: 'Sản phẩm', permission: 'marketplace.products.view', roles: allRoles, icon: ShoppingCart },
       { href: '/marketplace/cart/', label: 'Giỏ hàng', permission: 'marketplace.cart.view', roles: allRoles, icon: ShoppingCart },
       { href: '/marketplace/orders/', label: 'Lịch sử đơn hàng', permission: 'marketplace.orders.view', roles: allRoles, icon: FileText },
+    ],
+  },
+  {
+    id: 'news',
+    label: 'Tin tức',
+    shortLabel: 'NEWS',
+    href: '/news/',
+    permission: 'news.articles.view',
+    roles: allRoles,
+    icon: Newspaper,
+    nav: [
+      { href: '/news/', label: 'Tin tức', permission: 'news.articles.view', roles: allRoles, icon: Newspaper },
+    ],
+  },
+  {
+    id: 'forum',
+    label: 'Diễn đàn',
+    shortLabel: 'FORUM',
+    href: '/forum/',
+    permission: 'forum.threads.view',
+    roles: allRoles,
+    icon: MessageSquare,
+    nav: [
+      { href: '/forum/', label: 'Diễn đàn', permission: 'forum.threads.view', roles: allRoles, icon: MessageSquare },
+    ],
+  },
+  {
+    id: 'faq',
+    label: 'FAQ',
+    shortLabel: 'FAQ',
+    href: '/faq/',
+    permission: 'faq.questions.view',
+    roles: allRoles,
+    icon: CircleHelp,
+    nav: [
+      { href: '/faq/', label: 'FAQ', permission: 'faq.questions.view', roles: allRoles, icon: CircleHelp },
     ],
   },
   {

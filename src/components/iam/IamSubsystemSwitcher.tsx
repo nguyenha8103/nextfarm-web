@@ -7,19 +7,19 @@ export function IamSubsystemSwitcher({ dark }: { dark: boolean }) {
   const router = useRouter();
 
   return (
-    <div className="mt-5 grid gap-1">
+    <div className="mt-7 grid gap-1">
       <button
-        className={`flex h-9 items-center gap-2 rounded-md px-3 text-left text-xs font-bold ${
-          dark ? 'bg-[#123421] text-[#86efac]' : 'bg-[#e8f5e9] text-[#15803d]'
+        className={`flex h-10 items-center gap-3 rounded-lg border-l-2 px-3 text-left text-sm font-medium ${
+          dark ? 'border-emerald-500 bg-[#123421] text-[#86efac]' : 'border-emerald-600 bg-emerald-50 text-emerald-700'
         }`}
         type="button"
       >
-        <Shield size={15} />
+        <Shield size={18} strokeWidth={1.5} />
         Admin
       </button>
       <button
-        className={`flex h-9 items-center gap-2 rounded-md px-3 text-left text-xs font-bold ${
-          dark ? 'text-[#e5e7eb] hover:bg-[#1f2937]' : 'text-[#111827] hover:bg-white'
+        className={`flex h-10 items-center gap-3 rounded-lg border-l-2 px-3 text-left text-sm font-medium transition-all duration-150 ${
+          dark ? 'border-transparent text-[#e5e7eb] hover:bg-[#1f2937]' : 'border-transparent text-slate-700 hover:bg-slate-100'
         }`}
         onClick={() => {
           window.sessionStorage.setItem('nextfarm:navigatingSubsystem', 'farm');
@@ -27,7 +27,7 @@ export function IamSubsystemSwitcher({ dark }: { dark: boolean }) {
         }}
         type="button"
       >
-        <Sprout size={15} />
+        <Sprout size={18} strokeWidth={1.5} />
         Nông nghiệp
       </button>
     </div>

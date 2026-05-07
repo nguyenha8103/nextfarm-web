@@ -43,23 +43,23 @@ const workspaces = [
 ];
 
 const stats = [
-  { label: 'Tổng người dùng', value: 5, icon: UsersRound, bg: 'bg-[#dcfce7]', color: 'text-[#16a34a]' },
-  { label: 'Đang hoạt động', value: 3, icon: Activity, bg: 'bg-[#dcfce7]', color: 'text-[#16a34a]' },
+  { label: 'Tổng người dùng', value: 5, icon: UsersRound, bg: 'bg-emerald-50', color: 'text-emerald-600' },
+  { label: 'Đang hoạt động', value: 3, icon: Activity, bg: 'bg-emerald-50', color: 'text-emerald-600' },
   { label: 'Nhóm quyền', value: 4, icon: Shield, bg: 'bg-[#dff7ff]', color: 'text-[#0891b2]' },
   { label: 'Chi nhánh', value: 3, icon: Building2, bg: 'bg-[#ffedd5]', color: 'text-[#f97316]' },
 ];
 
 const loadedActivities = [
   { id: 'a1', tone: 'bg-[#0891b2]', title: 'Nguyễn Văn An đã đăng nhập', time: '2 phút trước' },
-  { id: 'a2', tone: 'bg-[#16a34a]', title: 'Đã tạo nhóm quyền "Farm Manager"', time: '15 phút trước' },
+  { id: 'a2', tone: 'bg-emerald-600', title: 'Đã tạo nhóm quyền "Farm Manager"', time: '15 phút trước' },
   { id: 'a3', tone: 'bg-[#0891b2]', title: 'Trần Thị Bình đã cập nhật thông tin', time: '1 giờ trước' },
-  { id: 'a4', tone: 'bg-[#16a34a]', title: 'Đã thêm chi nhánh mới "Long An"', time: '2 giờ trước' },
+  { id: 'a4', tone: 'bg-emerald-600', title: 'Đã thêm chi nhánh mới "Long An"', time: '2 giờ trước' },
 ];
 
 const branchDistribution = [
-  { name: 'Chi nhánh HCM', users: 12, width: '49%', color: 'bg-[#16a34a]' },
+  { name: 'Chi nhánh HCM', users: 12, width: '49%', color: 'bg-emerald-600' },
   { name: 'Chi nhánh Đồng Nai', users: 8, width: '32%', color: 'bg-[#0891b2]' },
-  { name: 'Chi nhánh Long An', users: 5, width: '20%', color: 'bg-[#16a34a]' },
+  { name: 'Chi nhánh Long An', users: 5, width: '20%', color: 'bg-emerald-600' },
 ];
 
 const menu = [
@@ -107,9 +107,9 @@ export function DashboardPage() {
 
   const dark = theme === 'dark';
   const activities = state === 'ready' ? loadedActivities : [];
-  const surface = dark ? 'bg-[#111827] border-[#263244]' : 'bg-white border-[#e1e4e8]';
-  const muted = dark ? 'text-[#9ca3af]' : 'text-[#687084]';
-  const divider = dark ? 'border-[#263244]' : 'border-[#e1e4e8]';
+  const surface = dark ? 'bg-[#111827] border-[#263244]' : 'bg-white border-slate-200/60';
+  const muted = dark ? 'text-[#9ca3af]' : 'text-slate-500';
+  const divider = dark ? 'border-[#263244]' : 'border-slate-200/60';
 
   function switchWorkspace(nextWorkspace: typeof workspace) {
     setWorkspace(nextWorkspace);
@@ -132,14 +132,14 @@ export function DashboardPage() {
   }
 
   return (
-    <main className={`relative min-h-[555px] ${dark ? 'bg-[#0b1120] text-white' : 'bg-white text-black'}`}>
-      <aside className={`fixed left-0 top-0 h-[555px] min-h-screen w-[190px] border-r px-[6px] py-[18px] ${dark ? 'border-[#263244] bg-[#111827]' : 'border-[#e1e4e8] bg-[#f4f7fb]'}`}>
-        <div className="flex items-center gap-2 px-[5px]">
-          <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#16a34a] text-sm font-extrabold text-white">
+    <main className={`relative min-h-[555px] ${dark ? 'bg-[#0b1120] text-white' : 'bg-slate-50 text-slate-900'}`}>
+      <aside className={`fixed left-0 top-0 h-[555px] min-h-screen w-[256px] border-r px-3 py-4 ${dark ? 'border-[#263244] bg-[#111827]' : 'border-slate-200/60 bg-slate-50'}`}>
+        <div className="flex items-center gap-2 px-2">
+          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-600 text-sm font-semibold text-white">
             N
           </div>
           <div>
-            <p className="text-xl font-bold leading-6">Nextfarm</p>
+            <p className="text-xl font-semibold leading-6">Nextfarm</p>
             <p className={`text-[10px] ${muted}`}>IAM System</p>
           </div>
         </div>
@@ -151,12 +151,12 @@ export function DashboardPage() {
             const Icon = item.icon;
             return (
               <button
-                className={`flex h-[34px] items-center gap-3 rounded-md px-3 text-left text-[13px] font-bold ${
+                className={`flex h-10 items-center gap-3 rounded-lg border-l-2 px-3 text-left text-sm font-medium ${
                   item.active
-                    ? 'bg-[#16a34a] text-white'
+                    ? 'border-emerald-600 bg-emerald-50 text-emerald-700'
                     : dark
                       ? 'text-[#e5e7eb] hover:bg-[#1f2937]'
-                      : 'text-[#111827] hover:bg-white'
+                      : 'border-transparent text-slate-700 hover:bg-slate-100'
                 }`}
                 key={item.label}
                 onClick={() => {
@@ -164,7 +164,7 @@ export function DashboardPage() {
                 }}
                 type="button"
               >
-                <Icon size={16} />
+                <Icon size={18} strokeWidth={1.5} />
                 {item.label}
               </button>
             );
@@ -172,23 +172,23 @@ export function DashboardPage() {
         </nav>
       </aside>
 
-      <section className="min-h-[555px] pl-[190px]">
+      <section className="min-h-[555px] pl-[256px]">
         <header className={`flex h-[49px] items-center justify-between border-b px-[27px] ${surface}`}>
           <div className="relative">
             <button
-              className={`flex min-w-[255px] items-center gap-2 rounded-md px-2 py-1 text-left transition ${dark ? 'hover:bg-[#1f2937]' : 'hover:bg-[#f4f7fb]'}`}
+              className={`flex min-w-[255px] items-center gap-2 rounded-lg px-2 py-1 text-left transition ${dark ? 'hover:bg-[#1f2937]' : 'hover:bg-slate-50'}`}
               onClick={() => {
                 setWorkspaceOpen((current) => !current);
                 setProfileOpen(false);
               }}
               type="button"
             >
-              <div className="flex h-6 w-6 items-center justify-center rounded bg-[#16a34a] text-xs font-extrabold text-white">
+              <div className="flex h-6 w-6 items-center justify-center rounded bg-emerald-600 text-xs font-semibold text-white">
                 {workspace.initial}
               </div>
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
-                  <p className="truncate text-xs font-extrabold leading-4">{workspace.name}</p>
+                  <p className="truncate text-xs font-semibold leading-4">{workspace.name}</p>
                   <ChevronDown size={12} />
                 </div>
                 <p className={`text-[10px] ${muted}`}>{workspace.role}</p>
@@ -196,29 +196,29 @@ export function DashboardPage() {
             </button>
 
             {workspaceOpen ? (
-              <div className={`absolute left-0 top-[42px] z-30 w-[286px] rounded-lg border p-2 shadow-lg ${surface}`}>
-                <p className={`px-2 pb-2 text-[11px] font-bold ${muted}`}>Chuyển workspace</p>
+              <div className={`absolute left-0 top-[42px] z-30 w-[286px] rounded-xl border p-2 shadow-md ${surface}`}>
+                <p className={`px-2 pb-2 text-[11px] font-medium ${muted}`}>Chuyển workspace</p>
                 <div className="grid gap-1">
                   {workspaces.map((item) => (
                     <button
-                      className={`flex items-center gap-3 rounded-md px-2 py-2 text-left transition ${dark ? 'hover:bg-[#1f2937]' : 'hover:bg-[#f4f7fb]'}`}
+                      className={`flex items-center gap-3 rounded-lg px-2 py-2 text-left transition ${dark ? 'hover:bg-[#1f2937]' : 'hover:bg-slate-50'}`}
                       key={item.id}
                       onClick={() => switchWorkspace(item)}
                       type="button"
                     >
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#16a34a] text-sm font-extrabold text-white">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-sm font-semibold text-white">
                         {item.initial}
                       </span>
                       <span className="min-w-0 flex-1">
-                        <span className="block truncate text-xs font-extrabold">{item.name}</span>
+                        <span className="block truncate text-xs font-semibold">{item.name}</span>
                         <span className={`text-[10px] ${muted}`}>{item.role} · {item.members} thành viên</span>
                       </span>
-                      {item.id === workspace.id ? <Check className="text-[#16a34a]" size={16} /> : null}
+                      {item.id === workspace.id ? <Check className="text-emerald-600" size={16} /> : null}
                     </button>
                   ))}
                 </div>
                 <button
-                  className={`mt-2 h-8 w-full rounded-md border border-dashed text-xs font-bold ${dark ? 'border-[#374151] text-[#e5e7eb]' : 'border-[#d8dce3] text-[#111827]'}`}
+                  className={`mt-2 h-8 w-full rounded-lg border border-dashed text-xs font-medium ${dark ? 'border-[#374151] text-[#e5e7eb]' : 'border-slate-200 text-slate-900'}`}
                   onClick={() => router.push('/select-workspace/')}
                   type="button"
                 >
@@ -231,7 +231,7 @@ export function DashboardPage() {
           <div className="flex items-center gap-4">
             <button
               aria-label={dark ? 'Chuyển theme sáng' : 'Chuyển theme tối'}
-              className={`flex h-8 w-8 items-center justify-center rounded-full ${dark ? 'hover:bg-[#1f2937]' : 'hover:bg-[#f4f7fb]'}`}
+              className={`flex h-8 w-8 items-center justify-center rounded-full ${dark ? 'hover:bg-[#1f2937]' : 'hover:bg-slate-50'}`}
               onClick={toggleTheme}
               title={dark ? 'Theme sáng' : 'Theme tối'}
               type="button"
@@ -242,7 +242,7 @@ export function DashboardPage() {
             <div className="relative">
               <button
                 aria-label="Tài khoản"
-                className="flex h-7 w-7 items-center justify-center rounded-full bg-[#009688] text-xs font-extrabold text-white"
+                className="flex h-7 w-7 items-center justify-center rounded-full bg-[#009688] text-xs font-semibold text-white"
                 onClick={() => {
                   setProfileOpen((current) => !current);
                   setWorkspaceOpen(false);
@@ -253,13 +253,13 @@ export function DashboardPage() {
               </button>
 
               {profileOpen ? (
-                <div className={`absolute right-0 top-[36px] z-30 w-[210px] rounded-lg border p-2 shadow-lg ${surface}`}>
+                <div className={`absolute right-0 top-[36px] z-30 w-[210px] rounded-xl border p-2 shadow-md ${surface}`}>
                   <div className={`border-b px-2 pb-2 ${divider}`}>
-                    <p className="text-xs font-extrabold">Admin Nextfarm</p>
+                    <p className="text-xs font-semibold">Admin Nextfarm</p>
                     <p className={`mt-1 text-[10px] ${muted}`}>admin@nextfarm.vn</p>
                   </div>
                   <button
-                    className={`mt-2 flex h-9 w-full items-center gap-2 rounded-md px-2 text-left text-xs font-bold transition ${dark ? 'text-[#fca5a5] hover:bg-[#1f2937]' : 'text-[#dc2626] hover:bg-[#fef2f2]'}`}
+                    className={`mt-2 flex h-9 w-full items-center gap-2 rounded-lg px-2 text-left text-xs font-medium transition ${dark ? 'text-[#fca5a5] hover:bg-[#1f2937]' : 'text-[#dc2626] hover:bg-[#fef2f2]'}`}
                     onClick={logout}
                     type="button"
                   >
@@ -273,7 +273,7 @@ export function DashboardPage() {
         </header>
 
         <div className="px-[18px] pb-10 pt-[18px]">
-          <h1 className="text-2xl font-extrabold leading-7">Tổng quan</h1>
+          <h1 className="text-2xl font-semibold tracking-tight leading-7">Tổng quan</h1>
           <p className={`mt-2 text-xs ${muted}`}>Thống kê hệ thống IAM</p>
 
           {state === 'loading' ? (
@@ -284,10 +284,10 @@ export function DashboardPage() {
                 {stats.map((stat) => {
                   const Icon = stat.icon;
                   return (
-                    <article className={`flex h-[84px] items-center justify-between rounded-lg border px-[18px] shadow-sm ${surface}`} key={stat.label}>
+                    <article className={`flex h-[84px] items-center justify-between rounded-xl border px-[18px]  ${surface}`} key={stat.label}>
                       <div>
                         <p className={`text-xs ${muted}`}>{stat.label}</p>
-                        <p className="mt-2 text-2xl font-extrabold">{stat.value}</p>
+                        <p className="mt-2 text-2xl font-semibold tracking-tight">{stat.value}</p>
                       </div>
                       <div className={`flex h-9 w-9 items-center justify-center rounded-lg ${stat.bg} ${stat.color}`}>
                         <Icon size={20} />
@@ -298,8 +298,8 @@ export function DashboardPage() {
               </div>
 
               <div className="mt-[18px] grid grid-cols-2 gap-[17px] max-lg:grid-cols-1">
-                <section className={`min-h-[253px] rounded-lg border px-[18px] py-[19px] shadow-sm ${surface}`}>
-                  <h2 className="text-base font-extrabold">Hoạt động gần đây</h2>
+                <section className={`min-h-[253px] rounded-xl border px-[18px] py-[19px]  ${surface}`}>
+                  <h2 className="text-base font-semibold">Hoạt động gần đây</h2>
                   {activities.length ? (
                     <div className="mt-2 grid">
                       {activities.map((activity) => (
@@ -317,8 +317,8 @@ export function DashboardPage() {
                   )}
                 </section>
 
-                <section className={`min-h-[253px] rounded-lg border px-[18px] py-[19px] shadow-sm ${surface}`}>
-                  <h2 className="text-base font-extrabold">Phân bổ người dùng theo chi nhánh</h2>
+                <section className={`min-h-[253px] rounded-xl border px-[18px] py-[19px]  ${surface}`}>
+                  <h2 className="text-base font-semibold">Phân bổ người dùng theo chi nhánh</h2>
                   <div className="mt-3 grid gap-[12px]">
                     {branchDistribution.map((branch) => (
                       <div key={branch.name}>
@@ -341,7 +341,7 @@ export function DashboardPage() {
 
       <button
         aria-label="Trợ giúp"
-        className={`absolute bottom-3 right-3 flex h-7 w-7 items-center justify-center rounded-full border text-lg shadow-sm ${dark ? 'border-[#263244] bg-[#111827] text-[#d1d5db]' : 'border-[#e2e2e2] bg-white text-[#4b5563]'}`}
+        className={`absolute bottom-3 right-3 flex h-7 w-7 items-center justify-center rounded-full border text-lg  ${dark ? 'border-[#263244] bg-[#111827] text-[#d1d5db]' : 'border-[#e2e2e2] bg-white text-slate-600'}`}
         type="button"
       >
         ?
@@ -351,7 +351,7 @@ export function DashboardPage() {
 }
 
 function DashboardLoading({ dark }: { dark: boolean }) {
-  const skeleton = dark ? 'border-[#263244] bg-[#1f2937]' : 'border-[#e1e4e8] bg-[#f5f7f8]';
+  const skeleton = dark ? 'border-[#263244] bg-[#1f2937]' : 'border-slate-200/60 bg-slate-100';
 
   return (
     <div className="mt-[18px] grid gap-[18px]">
@@ -371,10 +371,10 @@ function DashboardLoading({ dark }: { dark: boolean }) {
 function EmptyActivity({ muted }: { muted: string }) {
   return (
     <div className="flex min-h-[180px] flex-col items-center justify-center text-center">
-      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#eef8f0] text-[#16a34a]">
+      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#eef8f0] text-emerald-600">
         <Sprout size={20} />
       </div>
-      <p className="mt-3 text-sm font-bold">Chưa có hoạt động</p>
+      <p className="mt-3 text-sm font-medium">Chưa có hoạt động</p>
       <p className={`mt-1 text-xs ${muted}`}>Activity mới sẽ xuất hiện tại đây sau khi người dùng thao tác.</p>
     </div>
   );

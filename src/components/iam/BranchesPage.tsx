@@ -145,10 +145,10 @@ export function BranchesPage() {
   }, []);
 
   const dark = theme === 'dark';
-  const surface = dark ? 'bg-[#111827] border-[#263244]' : 'bg-white border-[#e1e4e8]';
-  const muted = dark ? 'text-[#9ca3af]' : 'text-[#687084]';
-  const divider = dark ? 'border-[#263244]' : 'border-[#e1e4e8]';
-  const input = dark ? 'border-[#374151] bg-[#1f2937] text-white' : 'border-[#d5d9df] bg-[#f3f4f6] text-[#111827]';
+  const surface = dark ? 'bg-[#111827] border-[#263244]' : 'bg-white border-slate-200/60';
+  const muted = dark ? 'text-[#9ca3af]' : 'text-slate-500';
+  const divider = dark ? 'border-[#263244]' : 'border-slate-200/60';
+  const input = dark ? 'border-[#374151] bg-[#1f2937] text-white' : 'border-slate-200 bg-slate-50 text-slate-900';
 
   const filteredBranches = useMemo(() => {
     const keyword = search.trim().toLowerCase();
@@ -191,12 +191,12 @@ export function BranchesPage() {
   }
 
   return (
-    <main className={`relative min-h-screen ${dark ? 'bg-[#0b1120] text-white' : 'bg-white text-black'}`}>
-      <aside className={`fixed left-0 top-0 h-screen min-h-screen w-[174px] border-r px-[6px] py-[18px] ${dark ? 'border-[#263244] bg-[#111827]' : 'border-[#e1e4e8] bg-[#f4f7fb]'}`}>
-        <div className="flex items-center gap-2 px-[7px]">
-          <div className="flex h-6 w-6 items-center justify-center rounded-md bg-[#16a34a] text-xs font-extrabold text-white">N</div>
+    <main className={`relative min-h-screen ${dark ? 'bg-[#0b1120] text-white' : 'bg-slate-50 text-slate-900'}`}>
+      <aside className={`fixed left-0 top-0 h-screen min-h-screen w-[256px] border-r px-3 py-4 ${dark ? 'border-[#263244] bg-[#111827]' : 'border-slate-200/60 bg-slate-50'}`}>
+        <div className="flex items-center gap-2 px-2">
+          <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-600 text-xs font-semibold text-white">N</div>
           <div>
-            <p className="text-lg font-bold leading-5">Nextfarm</p>
+            <p className="text-lg font-medium leading-5">Nextfarm</p>
             <p className={`text-[10px] ${muted}`}>IAM System</p>
           </div>
         </div>
@@ -208,12 +208,12 @@ export function BranchesPage() {
             const Icon = item.icon;
             return (
               <button
-                className={`flex h-[30px] items-center gap-3 rounded-md px-3 text-left text-xs font-bold ${
+                className={`flex h-10 items-center gap-3 rounded-lg border-l-2 px-3 text-left text-sm font-medium ${
                   item.active
-                    ? 'bg-[#16a34a] text-white'
+                    ? 'border-emerald-600 bg-emerald-50 text-emerald-700'
                     : dark
                       ? 'text-[#e5e7eb] hover:bg-[#1f2937]'
-                      : 'text-[#111827] hover:bg-white'
+                      : 'border-transparent text-slate-700 hover:bg-slate-100'
                 }`}
                 key={item.label}
                 onClick={() => {
@@ -221,7 +221,7 @@ export function BranchesPage() {
                 }}
                 type="button"
               >
-                <Icon size={15} />
+                <Icon size={18} strokeWidth={1.5} />
                 {item.label}
               </button>
             );
@@ -229,21 +229,21 @@ export function BranchesPage() {
         </nav>
       </aside>
 
-      <section className="min-h-screen pl-[174px]">
+      <section className="min-h-screen pl-[256px]">
         <header className={`flex h-[45px] items-center justify-between border-b px-[20px] ${surface}`}>
           <div className="relative">
             <button
-              className={`flex min-w-[245px] items-center gap-2 rounded-md px-2 py-1 text-left transition ${dark ? 'hover:bg-[#1f2937]' : 'hover:bg-[#f4f7fb]'}`}
+              className={`flex min-w-[245px] items-center gap-2 rounded-lg px-2 py-1 text-left transition ${dark ? 'hover:bg-[#1f2937]' : 'hover:bg-slate-50'}`}
               onClick={() => {
                 setWorkspaceOpen((current) => !current);
                 setProfileOpen(false);
               }}
               type="button"
             >
-              <div className="flex h-6 w-6 items-center justify-center rounded bg-[#16a34a] text-xs font-extrabold text-white">{workspace.initial}</div>
+              <div className="flex h-6 w-6 items-center justify-center rounded bg-emerald-600 text-xs font-semibold text-white">{workspace.initial}</div>
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
-                  <p className="truncate text-xs font-extrabold leading-4">{workspace.name}</p>
+                  <p className="truncate text-xs font-semibold leading-4">{workspace.name}</p>
                   <ChevronDown size={12} />
                 </div>
                 <p className={`text-[10px] ${muted}`}>{workspace.role}</p>
@@ -251,22 +251,22 @@ export function BranchesPage() {
             </button>
 
             {workspaceOpen ? (
-              <div className={`absolute left-0 top-[40px] z-30 w-[286px] rounded-lg border p-2 shadow-lg ${surface}`}>
-                <p className={`px-2 pb-2 text-[11px] font-bold ${muted}`}>Chuyển workspace</p>
+              <div className={`absolute left-0 top-[40px] z-30 w-[286px] rounded-xl border p-2 shadow-md ${surface}`}>
+                <p className={`px-2 pb-2 text-[11px] font-medium ${muted}`}>Chuyển workspace</p>
                 <div className="grid gap-1">
                   {workspaces.map((item) => (
                     <button
-                      className={`flex items-center gap-3 rounded-md px-2 py-2 text-left transition ${dark ? 'hover:bg-[#1f2937]' : 'hover:bg-[#f4f7fb]'}`}
+                      className={`flex items-center gap-3 rounded-lg px-2 py-2 text-left transition ${dark ? 'hover:bg-[#1f2937]' : 'hover:bg-slate-50'}`}
                       key={item.id}
                       onClick={() => switchWorkspace(item)}
                       type="button"
                     >
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#16a34a] text-sm font-extrabold text-white">{item.initial}</span>
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-sm font-semibold text-white">{item.initial}</span>
                       <span className="min-w-0 flex-1">
-                        <span className="block truncate text-xs font-extrabold">{item.name}</span>
+                        <span className="block truncate text-xs font-semibold">{item.name}</span>
                         <span className={`text-[10px] ${muted}`}>{item.role} · {item.members} thành viên</span>
                       </span>
-                      {item.id === workspace.id ? <Check className="text-[#16a34a]" size={16} /> : null}
+                      {item.id === workspace.id ? <Check className="text-emerald-600" size={16} /> : null}
                     </button>
                   ))}
                 </div>
@@ -275,12 +275,12 @@ export function BranchesPage() {
           </div>
 
           <div className="flex items-center gap-4">
-            <button className={`flex h-8 w-8 items-center justify-center rounded-full ${dark ? 'hover:bg-[#1f2937]' : 'hover:bg-[#f4f7fb]'}`} onClick={toggleTheme} type="button">
+            <button className={`flex h-8 w-8 items-center justify-center rounded-full ${dark ? 'hover:bg-[#1f2937]' : 'hover:bg-slate-50'}`} onClick={toggleTheme} type="button">
               {dark ? <Sun size={17} /> : <Moon size={17} />}
             </button>
             <div className="relative">
               <button
-                className="flex h-6 w-6 items-center justify-center rounded-full bg-[#009688] text-xs font-extrabold text-white"
+                className="flex h-6 w-6 items-center justify-center rounded-full bg-[#009688] text-xs font-semibold text-white"
                 onClick={() => {
                   setProfileOpen((current) => !current);
                   setWorkspaceOpen(false);
@@ -290,12 +290,12 @@ export function BranchesPage() {
                 A
               </button>
               {profileOpen ? (
-                <div className={`absolute right-0 top-[34px] z-30 w-[210px] rounded-lg border p-2 shadow-lg ${surface}`}>
+                <div className={`absolute right-0 top-[34px] z-30 w-[210px] rounded-xl border p-2 shadow-md ${surface}`}>
                   <div className={`border-b px-2 pb-2 ${divider}`}>
-                    <p className="text-xs font-extrabold">Admin Nextfarm</p>
+                    <p className="text-xs font-semibold">Admin Nextfarm</p>
                     <p className={`mt-1 text-[10px] ${muted}`}>admin@nextfarm.vn</p>
                   </div>
-                  <button className={`mt-2 flex h-9 w-full items-center gap-2 rounded-md px-2 text-left text-xs font-bold ${dark ? 'text-[#fca5a5] hover:bg-[#1f2937]' : 'text-[#dc2626] hover:bg-[#fef2f2]'}`} onClick={logout} type="button">
+                  <button className={`mt-2 flex h-9 w-full items-center gap-2 rounded-lg px-2 text-left text-xs font-medium ${dark ? 'text-[#fca5a5] hover:bg-[#1f2937]' : 'text-[#dc2626] hover:bg-[#fef2f2]'}`} onClick={logout} type="button">
                     <LogOut size={15} />
                     Đăng xuất
                   </button>
@@ -308,22 +308,22 @@ export function BranchesPage() {
         <div className="px-[16px] pb-8 pt-[19px]">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <h1 className="text-[22px] font-extrabold leading-7">Quản lý chi nhánh</h1>
+              <h1 className="text-[22px] font-semibold leading-7">Quản lý chi nhánh</h1>
               <p className={`mt-1 text-xs ${muted}`}>Quản lý chi nhánh, người phụ trách và phân bổ người dùng</p>
             </div>
-            <button className="flex h-[30px] items-center gap-2 rounded-md bg-[#16a34a] px-3 text-xs font-bold text-white" onClick={() => setCreateOpen(true)} type="button">
+            <button className="flex h-[30px] items-center gap-2 rounded-lg bg-emerald-600 px-3 text-xs font-medium text-white" onClick={() => setCreateOpen(true)} type="button">
               <Plus size={14} />
               Tạo chi nhánh
             </button>
           </div>
 
-          <section className={`mt-8 rounded-lg border p-4 ${surface}`}>
+          <section className={`mt-8 rounded-xl border p-4 ${surface}`}>
             <div className="flex items-center gap-3">
-              <div className={`flex h-8 w-9 items-center justify-center rounded-md border ${dark ? 'border-[#374151] bg-[#1f2937]' : 'border-[#d5d9df] bg-[#f3f4f6]'}`}>
+              <div className={`flex h-8 w-9 items-center justify-center rounded-lg border ${dark ? 'border-[#374151] bg-[#1f2937]' : 'border-slate-200 bg-slate-50'}`}>
                 <Search size={15} className={muted} />
               </div>
               <input
-                className={`h-8 flex-1 rounded-md border px-3 text-xs outline-none ${input}`}
+                className={`h-8 flex-1 rounded-xl border px-3 text-xs outline-none ${input}`}
                 onChange={(event) => setSearch(event.target.value)}
                 placeholder="Tìm theo tên chi nhánh, địa chỉ, quản lý"
                 value={search}
@@ -332,7 +332,7 @@ export function BranchesPage() {
 
             <div className="mt-4 overflow-x-auto">
               <table className="w-full min-w-[880px] border-collapse text-left text-xs">
-                <thead className={dark ? 'bg-[#1f2937]' : 'bg-[#f3f3f5]'}>
+                <thead className={dark ? 'bg-[#1f2937]' : 'bg-slate-50'}>
                   <tr className={muted}>
                     <th className="px-3 py-[10px] font-medium">Tên chi nhánh</th>
                     <th className="px-3 py-[10px] font-medium">Địa chỉ</th>
@@ -347,9 +347,9 @@ export function BranchesPage() {
                     <tr className={`border-b last:border-b-0 ${divider}`} key={branch.id}>
                       <td className="px-3 py-[12px]">
                         <div className="flex items-center gap-3">
-                          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#009688] text-[11px] font-extrabold text-white">{branch.name.charAt(10) || 'C'}</div>
+                          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#009688] text-[11px] font-semibold text-white">{branch.name.charAt(10) || 'C'}</div>
                           <div>
-                            <p className="font-bold">{branch.name}</p>
+                            <p className="font-medium">{branch.name}</p>
                             <p className={`mt-1 text-[10px] ${muted}`}>Mã: {branch.id}</p>
                           </div>
                         </div>
@@ -360,15 +360,15 @@ export function BranchesPage() {
                           <span className="leading-4">{branch.address}</span>
                         </div>
                       </td>
-                      <td className="px-3 py-[12px] font-bold">{branch.manager}</td>
+                      <td className="px-3 py-[12px] font-medium">{branch.manager}</td>
                       <td className="px-3 py-[12px]">{branch.assignedUserIds.length} người</td>
                       <td className={`px-3 py-[12px] ${muted}`}>{branch.createdAt}</td>
                       <td className="px-3 py-[12px]">
                         <div className="flex justify-end gap-2">
-                          <button className={`flex h-7 w-7 items-center justify-center rounded-md border ${dark ? 'border-[#374151] hover:bg-[#1f2937]' : 'border-[#d5d9df] hover:bg-[#f8fafc]'}`} onClick={() => setEditingBranch(branch)} type="button">
+                          <button className={`flex h-7 w-7 items-center justify-center rounded-lg border ${dark ? 'border-[#374151] hover:bg-[#1f2937]' : 'border-slate-200 hover:bg-slate-50'}`} onClick={() => setEditingBranch(branch)} type="button">
                             <Pencil size={13} />
                           </button>
-                          <button className="flex h-7 w-7 items-center justify-center rounded-md border border-[#fecaca] text-[#dc2626] hover:bg-[#fef2f2]" onClick={() => setDeletingBranch(branch)} type="button">
+                          <button className="flex h-7 w-7 items-center justify-center rounded-lg border border-[#fecaca] text-[#dc2626] hover:bg-[#fef2f2]" onClick={() => setDeletingBranch(branch)} type="button">
                             <Trash2 size={13} />
                           </button>
                         </div>
@@ -380,8 +380,8 @@ export function BranchesPage() {
             </div>
 
             {filteredBranches.length === 0 ? (
-              <div className={`mt-4 rounded-md border border-dashed px-4 py-8 text-center text-xs ${divider}`}>
-                <p className="font-bold">Không có chi nhánh phù hợp</p>
+              <div className={`mt-4 rounded-lg border border-dashed px-4 py-8 text-center text-xs ${divider}`}>
+                <p className="font-medium">Không có chi nhánh phù hợp</p>
                 <p className={`mt-1 ${muted}`}>Thay đổi từ khóa tìm kiếm hoặc tạo chi nhánh mới.</p>
               </div>
             ) : null}
@@ -421,7 +421,7 @@ export function BranchesPage() {
 
       <button
         aria-label="Trợ giúp"
-        className={`fixed bottom-3 right-3 flex h-7 w-7 items-center justify-center rounded-full border text-lg shadow-sm ${dark ? 'border-[#263244] bg-[#111827] text-[#d1d5db]' : 'border-[#e2e2e2] bg-white text-[#4b5563]'}`}
+        className={`fixed bottom-3 right-3 flex h-7 w-7 items-center justify-center rounded-full border text-lg  ${dark ? 'border-[#263244] bg-[#111827] text-[#d1d5db]' : 'border-[#e2e2e2] bg-white text-slate-600'}`}
         type="button"
       >
         ?
@@ -457,9 +457,9 @@ function BranchModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45">
-      <section className={`w-[430px] overflow-hidden rounded-md shadow-xl ${dark ? 'bg-[#111827] text-white' : 'bg-white text-black'}`}>
-        <div className={`flex h-[52px] items-center justify-between border-b px-4 ${dark ? 'border-[#263244]' : 'border-[#e1e4e8]'}`}>
-          <h2 className="text-sm font-extrabold">{branch ? 'Sửa chi nhánh' : 'Tạo chi nhánh mới'}</h2>
+      <section className={`w-[430px] overflow-hidden rounded-lg shadow-xl ${dark ? 'bg-[#111827] text-white' : 'bg-slate-50 text-slate-900'}`}>
+        <div className={`flex h-[52px] items-center justify-between border-b px-4 ${dark ? 'border-[#263244]' : 'border-slate-200/60'}`}>
+          <h2 className="text-sm font-semibold">{branch ? 'Sửa chi nhánh' : 'Tạo chi nhánh mới'}</h2>
           <button onClick={onClose} type="button"><X size={16} /></button>
         </div>
         <form
@@ -484,43 +484,43 @@ function BranchModal({
             });
           }}
         >
-          <label className="grid gap-2 text-[11px] font-bold">
+          <label className="grid gap-2 text-[11px] font-medium">
             Tên chi nhánh *
-            <input className={`h-8 rounded-md border px-3 text-xs outline-none ${input}`} onChange={(event) => setName(event.target.value)} placeholder="Ví dụ: Chi nhánh Cần Thơ" value={name} />
+            <input className={`h-8 rounded-xl border px-3 text-xs outline-none ${input}`} onChange={(event) => setName(event.target.value)} placeholder="Ví dụ: Chi nhánh Cần Thơ" value={name} />
           </label>
-          <label className="grid gap-2 text-[11px] font-bold">
+          <label className="grid gap-2 text-[11px] font-medium">
             Địa chỉ *
-            <textarea className={`min-h-[64px] rounded-md border px-3 py-2 text-xs outline-none ${input}`} onChange={(event) => setAddress(event.target.value)} placeholder="Nhập địa chỉ chi nhánh" value={address} />
+            <textarea className={`min-h-[64px] rounded-xl border px-3 py-2 text-xs outline-none ${input}`} onChange={(event) => setAddress(event.target.value)} placeholder="Nhập địa chỉ chi nhánh" value={address} />
           </label>
-          <label className="grid gap-2 text-[11px] font-bold">
+          <label className="grid gap-2 text-[11px] font-medium">
             Quản lý *
-            <select className={`h-8 rounded-md border px-3 text-xs outline-none ${input}`} onChange={(event) => setManager(event.target.value)} value={manager}>
+            <select className={`h-8 rounded-xl border px-3 text-xs outline-none ${input}`} onChange={(event) => setManager(event.target.value)} value={manager}>
               {users.map((user) => (
                 <option key={user.id} value={user.name}>{user.name}</option>
               ))}
             </select>
           </label>
 
-          <div className="grid gap-2 text-[11px] font-bold">
+          <div className="grid gap-2 text-[11px] font-medium">
             Gán người dùng
-            <div className={`max-h-[132px] overflow-y-auto rounded-md border p-2 ${dark ? 'border-[#374151]' : 'border-[#d5d9df]'}`}>
+            <div className={`max-h-[132px] overflow-y-auto rounded-lg border p-2 ${dark ? 'border-[#374151]' : 'border-slate-200'}`}>
               {users.map((user) => (
-                <label className={`flex items-center gap-2 rounded px-2 py-2 ${dark ? 'hover:bg-[#1f2937]' : 'hover:bg-[#f8fafc]'}`} key={user.id}>
-                  <input checked={assignedUserIds.includes(user.id)} className="h-3 w-3 accent-[#16a34a]" onChange={() => toggleUser(user.id)} type="checkbox" />
+                <label className={`flex items-center gap-2 rounded px-2 py-2 ${dark ? 'hover:bg-[#1f2937]' : 'hover:bg-slate-50'}`} key={user.id}>
+                  <input checked={assignedUserIds.includes(user.id)} className="h-3 w-3 accent-emerald-600" onChange={() => toggleUser(user.id)} type="checkbox" />
                   <span className="min-w-0 flex-1">
-                    <span className="block truncate text-[11px] font-bold">{user.name}</span>
-                    <span className={`block truncate text-[10px] font-normal ${dark ? 'text-[#9ca3af]' : 'text-[#687084]'}`}>{user.email} · {user.role}</span>
+                    <span className="block truncate text-[11px] font-medium">{user.name}</span>
+                    <span className={`block truncate text-[10px] font-normal ${dark ? 'text-[#9ca3af]' : 'text-slate-500'}`}>{user.email} · {user.role}</span>
                   </span>
                 </label>
               ))}
             </div>
           </div>
 
-          {error ? <p className="rounded-md border border-[#fecaca] bg-[#fef2f2] px-3 py-2 text-[11px] font-bold text-[#dc2626]">{error}</p> : null}
+          {error ? <p className="rounded-lg border border-[#fecaca] bg-[#fef2f2] px-3 py-2 text-[11px] font-medium text-[#dc2626]">{error}</p> : null}
 
-          <div className={`mt-2 flex justify-end gap-2 border-t pt-4 ${dark ? 'border-[#263244]' : 'border-[#e1e4e8]'}`}>
-            <button className="h-8 rounded-md border border-[#d5d9df] px-4 text-xs font-bold" onClick={onClose} type="button">Hủy</button>
-            <button className="h-8 rounded-md bg-[#16a34a] px-4 text-xs font-bold text-white" type="submit">{branch ? 'Lưu thay đổi' : 'Tạo chi nhánh'}</button>
+          <div className={`mt-2 flex justify-end gap-2 border-t pt-4 ${dark ? 'border-[#263244]' : 'border-slate-200/60'}`}>
+            <button className="h-8 rounded-lg border border-slate-200 px-4 text-xs font-medium" onClick={onClose} type="button">Hủy</button>
+            <button className="h-8 rounded-lg bg-emerald-600 px-4 text-xs font-medium text-white" type="submit">{branch ? 'Lưu thay đổi' : 'Tạo chi nhánh'}</button>
           </div>
         </form>
       </section>
@@ -541,24 +541,24 @@ function DeleteBranchModal({
 }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45">
-      <section className={`w-[360px] overflow-hidden rounded-md shadow-xl ${dark ? 'bg-[#111827] text-white' : 'bg-white text-black'}`}>
-        <div className={`flex h-[52px] items-center justify-between border-b px-4 ${dark ? 'border-[#263244]' : 'border-[#e1e4e8]'}`}>
-          <h2 className="text-sm font-extrabold">Xóa chi nhánh</h2>
+      <section className={`w-[360px] overflow-hidden rounded-lg shadow-xl ${dark ? 'bg-[#111827] text-white' : 'bg-slate-50 text-slate-900'}`}>
+        <div className={`flex h-[52px] items-center justify-between border-b px-4 ${dark ? 'border-[#263244]' : 'border-slate-200/60'}`}>
+          <h2 className="text-sm font-semibold">Xóa chi nhánh</h2>
           <button onClick={onClose} type="button"><X size={16} /></button>
         </div>
         <div className="grid gap-4 p-4">
           <div>
-            <p className="text-xs font-bold">Bạn có chắc chắn muốn xóa {branch.name}?</p>
-            <p className={`mt-2 text-[11px] ${dark ? 'text-[#9ca3af]' : 'text-[#687084]'}`}>
+            <p className="text-xs font-medium">Bạn có chắc chắn muốn xóa {branch.name}?</p>
+            <p className={`mt-2 text-[11px] ${dark ? 'text-[#9ca3af]' : 'text-slate-500'}`}>
               Chi nhánh sẽ bị gỡ khỏi danh sách. Người dùng đang gán vào chi nhánh này cần được gán lại ở bước vận hành thật.
             </p>
           </div>
-          <div className="rounded-md border border-[#fed7aa] bg-[#fff7ed] px-3 py-2 text-[11px] font-bold text-[#ea580c]">
+          <div className="rounded-lg border border-[#fed7aa] bg-[#fff7ed] px-3 py-2 text-[11px] font-medium text-[#ea580c]">
             Hiện có {branch.assignedUserIds.length} người dùng trong chi nhánh này.
           </div>
-          <div className={`flex justify-end gap-2 border-t pt-4 ${dark ? 'border-[#263244]' : 'border-[#e1e4e8]'}`}>
-            <button className="h-8 rounded-md border border-[#d5d9df] px-4 text-xs font-bold" onClick={onClose} type="button">Hủy</button>
-            <button className="h-8 rounded-md bg-[#dc2626] px-4 text-xs font-bold text-white" onClick={onDelete} type="button">Xóa chi nhánh</button>
+          <div className={`flex justify-end gap-2 border-t pt-4 ${dark ? 'border-[#263244]' : 'border-slate-200/60'}`}>
+            <button className="h-8 rounded-lg border border-slate-200 px-4 text-xs font-medium" onClick={onClose} type="button">Hủy</button>
+            <button className="h-8 rounded-lg bg-[#dc2626] px-4 text-xs font-medium text-white" onClick={onDelete} type="button">Xóa chi nhánh</button>
           </div>
         </div>
       </section>
