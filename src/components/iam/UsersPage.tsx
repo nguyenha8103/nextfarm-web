@@ -879,7 +879,7 @@ function CreateUserModal({ dark, input, onClose, onCreate }: { dark: boolean; in
 
 function ModalFrame({ children, dark, icon, onClose, title }: { children: React.ReactNode; dark: boolean; icon?: React.ReactNode; onClose: () => void; title: string }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/45">
       <section className={`w-[348px] overflow-hidden rounded-lg shadow-xl ${dark ? 'bg-[#111827] text-white' : 'bg-slate-50 text-slate-900'}`}>
         <div className={`flex h-[58px] items-center justify-between border-b px-4 ${dark ? 'border-[#263244]' : 'border-slate-200/60'}`}>
           <div className="flex items-center gap-3">

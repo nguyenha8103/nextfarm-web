@@ -821,7 +821,7 @@ function PurchaseOrderModal({ onClose, onCreate }: { onClose: () => void; onCrea
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/45 px-4">
       <div className="w-full max-w-[720px] overflow-hidden rounded-xl bg-white shadow-xl">
         <div className="flex items-center justify-between border-b border-[#e1e8df] px-5 py-4">
           <div>
@@ -901,7 +901,7 @@ function PoApprovalModal({ action, onClose, onSubmit, order }: { action: Approva
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/45 px-4">
       <div className="w-full max-w-[500px] overflow-hidden rounded-xl bg-white shadow-xl">
         <div className="flex items-center justify-between border-b border-[#e1e8df] px-5 py-4">
           <div>

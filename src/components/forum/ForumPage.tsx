@@ -489,7 +489,7 @@ function PostDetailModal({
   post: ForumPost;
 }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/10 p-6">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-slate-900/10 p-6">
       <section className="max-h-[86vh] w-full max-w-[640px] overflow-auto rounded-2xl border border-slate-200/60 bg-white shadow-xl">
         <div className="flex h-14 items-center justify-between border-b border-slate-200/60 px-5">
           <h2 className="text-lg font-semibold">Chi tiết bài viết</h2>
@@ -568,7 +568,7 @@ function PostFormModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/10 p-6">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-slate-900/10 p-6">
       <section className="w-full max-w-[500px] overflow-hidden rounded-2xl border border-slate-200/60 bg-white shadow-xl">
         <div className="flex h-14 items-center justify-between border-b border-slate-200/60 px-5">
           <h2 className="text-lg font-semibold">{post ? 'Sửa bài viết' : 'Tạo bài viết'}</h2>
@@ -660,7 +660,7 @@ function PostFormModal({
 
 function DeletePostModal({ onClose, onDelete, post }: { onClose: () => void; onDelete: () => void; post: ForumPost }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/10 p-6">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-slate-900/10 p-6">
       <section className="w-full max-w-[380px] rounded-2xl border border-slate-200/60 bg-white p-5 shadow-xl">
         <h2 className="text-lg font-semibold">Xóa bài viết</h2>
         <p className="mt-3 text-sm leading-6 text-slate-600">Bạn có chắc chắn muốn xóa bài viết này?</p>

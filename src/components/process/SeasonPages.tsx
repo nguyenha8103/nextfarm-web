@@ -714,7 +714,7 @@ function SeasonFormModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4 py-6">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/45 px-4 py-6">
       <div className="flex max-h-[92vh] w-full max-w-[920px] flex-col overflow-hidden rounded-xl bg-white shadow-xl">
         <div className="flex items-center justify-between border-b border-[#e1e4e8] px-5 py-4">
           <div>
@@ -894,7 +894,7 @@ function SeasonFormModal({
 
 function HarvestEntryModal({ onClose, season }: { onClose: () => void; season: Season }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/45 px-4">
       <div className="w-full max-w-[520px] overflow-hidden rounded-lg bg-white shadow-xl">
         <div className="flex items-center justify-between border-b border-[#e1e4e8] px-5 py-4">
           <div>
@@ -1227,7 +1227,7 @@ function CreateTemplateModal({ embedded = false, onClose, onCreate }: { embedded
   }
 
   return (
-    <div className={embedded ? '' : 'fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4 py-6'}>
+    <div className={embedded ? '' : 'fixed inset-0 z-[200] flex items-center justify-center bg-black/45 px-4 py-6'}>
       <div className={embedded ? 'flex w-full flex-col overflow-hidden rounded-xl bg-white' : 'flex max-h-[92vh] w-full max-w-[980px] flex-col overflow-hidden rounded-xl bg-white shadow-xl'}>
         <div className="flex items-center justify-between border-b border-[#e1e4e8] px-5 py-4">
           <div>

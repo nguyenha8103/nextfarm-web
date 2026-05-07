@@ -997,7 +997,7 @@ function CreateParcelModal({ onClose, onCreate }: { onClose: () => void; onCreat
   const [farmer, setFarmer] = useState('Nguyễn Văn An');
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/45">
       <section className="w-[760px] overflow-hidden rounded-md bg-white shadow-xl">
         <div className="flex h-[52px] items-center justify-between border-b border-[#e1e4e8] px-4">
           <h2 className="text-sm font-extrabold">Tạo thửa đất mới</h2>
@@ -1109,7 +1109,7 @@ function CreateZoneModal({ onClose, onCreate }: { onClose: () => void; onCreate:
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/45">
       <section className="w-[920px] overflow-hidden rounded-md bg-white shadow-xl">
         <div className="flex h-[52px] items-center justify-between border-b border-[#e1e4e8] px-4">
           <div>

@@ -377,7 +377,7 @@ function ArticleDetailModal({
   onEdit: () => void;
 }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/10 p-6">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-slate-900/10 p-6">
       <section className="max-h-[84vh] w-full max-w-[640px] overflow-auto rounded-2xl border border-slate-200/60 bg-white shadow-xl">
         <div className="flex items-center justify-between border-b border-slate-200/60 px-6 py-4">
           <span className="inline-flex rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-700">
@@ -451,7 +451,7 @@ function ArticleFormModal({
   const [tags, setTags] = useState(article?.tags.join(', ') ?? '');
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/10 p-6">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-slate-900/10 p-6">
       <section className="w-full max-w-[460px] overflow-hidden rounded-2xl border border-slate-200/60 bg-white shadow-xl">
         <div className="flex h-14 items-center justify-between border-b border-slate-200/60 px-5">
           <h2 className="text-lg font-semibold">{article ? 'Sửa tin tức' : 'Thêm tin tức'}</h2>
@@ -538,7 +538,7 @@ function ArticleFormModal({
 
 function DeleteArticleModal({ article, onClose, onDelete }: { article: NewsArticle; onClose: () => void; onDelete: () => void }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/10 p-6">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-slate-900/10 p-6">
       <section className="w-full max-w-[380px] rounded-2xl border border-slate-200/60 bg-white p-5 shadow-xl">
         <h2 className="text-lg font-semibold">Xóa tin tức</h2>
         <p className="mt-3 text-sm leading-6 text-slate-600">Bạn có chắc chắn muốn xóa tin tức này?</p>

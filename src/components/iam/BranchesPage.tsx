@@ -458,7 +458,7 @@ function BranchModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/45">
       <section className={`w-[430px] overflow-hidden rounded-lg shadow-xl ${dark ? 'bg-[#111827] text-white' : 'bg-slate-50 text-slate-900'}`}>
         <div className={`flex h-[52px] items-center justify-between border-b px-4 ${dark ? 'border-[#263244]' : 'border-slate-200/60'}`}>
           <h2 className="text-sm font-semibold">{branch ? 'Sửa chi nhánh' : 'Tạo chi nhánh mới'}</h2>
@@ -542,7 +542,7 @@ function DeleteBranchModal({
   onDelete: () => void;
 }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/45">
       <section className={`w-[360px] overflow-hidden rounded-lg shadow-xl ${dark ? 'bg-[#111827] text-white' : 'bg-slate-50 text-slate-900'}`}>
         <div className={`flex h-[52px] items-center justify-between border-b px-4 ${dark ? 'border-[#263244]' : 'border-slate-200/60'}`}>
           <h2 className="text-sm font-semibold">Xóa chi nhánh</h2>

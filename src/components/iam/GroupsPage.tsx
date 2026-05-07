@@ -669,7 +669,7 @@ function CreateGroupModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/45">
       <section className={`w-[344px] overflow-hidden rounded-lg shadow-xl ${dark ? 'bg-[#111827] text-white' : 'bg-slate-50 text-slate-900'}`}>
         <div className={`flex h-[52px] items-center justify-between border-b px-4 ${dark ? 'border-[#263244]' : 'border-slate-200/60'}`}>
           <h2 className="text-sm font-semibold">Tạo nhóm quyền mới</h2>
@@ -756,7 +756,7 @@ function EditGroupModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/45">
       <section className={`w-[344px] overflow-hidden rounded-lg shadow-xl ${dark ? 'bg-[#111827] text-white' : 'bg-slate-50 text-slate-900'}`}>
         <div className={`flex h-[52px] items-center justify-between border-b px-4 ${dark ? 'border-[#263244]' : 'border-slate-200/60'}`}>
           <h2 className="text-sm font-semibold">Sửa nhóm quyền</h2>
@@ -845,7 +845,7 @@ function DeleteGroupModal({
   onDelete: () => void;
 }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/45">
       <section className={`w-[344px] overflow-hidden rounded-lg shadow-xl ${dark ? 'bg-[#111827] text-white' : 'bg-slate-50 text-slate-900'}`}>
         <div className={`flex h-[52px] items-center justify-between border-b px-4 ${dark ? 'border-[#263244]' : 'border-slate-200/60'}`}>
           <h2 className="text-sm font-semibold">Xóa nhóm quyền</h2>
