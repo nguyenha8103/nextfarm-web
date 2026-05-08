@@ -103,6 +103,11 @@ const initialPosts: ForumPost[] = [
 ];
 
 const categories = ['Tất cả', 'Kỹ thuật canh tác', 'Công nghệ mới', 'Thị trường', 'Hỏi đáp', 'Chia sẻ kinh nghiệm'];
+const currentForumUser = {
+  author: 'Admin Nextfarm',
+  avatar: 'A',
+  location: 'HTX Nông nghiệp Bình Điền',
+};
 
 function loadPosts() {
   if (typeof window === 'undefined') return initialPosts;
@@ -131,12 +136,8 @@ function canCreate(role: UserRole) {
   return role === 'owner' || role === 'admin' || role === 'farm_manager';
 }
 
-function canEdit(role: UserRole) {
-  return role === 'owner' || role === 'admin' || role === 'farm_manager';
-}
-
-function canDelete(role: UserRole) {
-  return role === 'owner' || role === 'admin';
+function isOwnPost(post: ForumPost) {
+  return post.author === currentForumUser.author;
 }
 
 function createId(content: string) {
@@ -180,6 +181,8 @@ export function ForumPage() {
 
   function upsertPost(post: ForumPost) {
     const exists = posts.some((item) => item.id === post.id);
+    if (exists && !isOwnPost(post)) return;
+
     const nextPosts = exists ? posts.map((item) => (item.id === post.id ? post : item)) : [post, ...posts];
 
     persist(nextPosts);
@@ -189,6 +192,9 @@ export function ForumPage() {
   }
 
   function removePost(postId: string) {
+    const targetPost = posts.find((post) => post.id === postId);
+    if (!targetPost || !isOwnPost(targetPost)) return;
+
     persist(posts.filter((post) => post.id !== postId));
     setDeletePost(null);
     if (selectedPost?.id === postId) setSelectedPost(null);
@@ -292,11 +298,11 @@ export function ForumPage() {
           {filteredPosts.length ? (
             filteredPosts.map((post) => (
               <PostCard
-                canDelete={canDelete(role)}
-                canEdit={canEdit(role)}
+                canDelete={isOwnPost(post)}
+                canEdit={isOwnPost(post)}
                 key={post.id}
-                onDelete={() => setDeletePost(post)}
-                onEdit={() => setEditingPost(post)}
+                onDelete={() => isOwnPost(post) && setDeletePost(post)}
+                onEdit={() => isOwnPost(post) && setEditingPost(post)}
                 onComment={(comment) => addComment(post.id, comment)}
                 onReact={() => reactPost(post.id)}
                 onShare={() => sharePost(post.id)}
@@ -316,11 +322,11 @@ export function ForumPage() {
 
       {selectedPost ? (
         <PostDetailModal
-          canDelete={canDelete(role)}
-          canEdit={canEdit(role)}
+          canDelete={isOwnPost(selectedPost)}
+          canEdit={isOwnPost(selectedPost)}
           onClose={() => setSelectedPost(null)}
-          onDelete={() => setDeletePost(selectedPost)}
-          onEdit={() => setEditingPost(selectedPost)}
+          onDelete={() => isOwnPost(selectedPost) && setDeletePost(selectedPost)}
+          onEdit={() => isOwnPost(selectedPost) && setEditingPost(selectedPost)}
           onComment={(comment) => addComment(selectedPost.id, comment)}
           onReact={() => reactPost(selectedPost.id)}
           onShare={() => sharePost(selectedPost.id)}
@@ -585,9 +591,9 @@ function PostFormModal({
 
             onSave({
               id: post?.id ?? createId(nextContent),
-              author: post?.author ?? 'Nguyễn Văn A',
-              avatar: post?.avatar ?? 'N',
-              location: location.trim() || 'An Giang',
+              author: post?.author ?? currentForumUser.author,
+              avatar: post?.avatar ?? currentForumUser.avatar,
+              location: location.trim() || currentForumUser.location,
               timeAgo: post?.timeAgo ?? 'Vừa xong',
               category,
               content: nextContent,

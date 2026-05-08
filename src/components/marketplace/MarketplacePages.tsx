@@ -44,7 +44,7 @@ type MarketplaceOrder = {
 };
 
 const cartKey = 'nextfarm:marketplaceCart';
-const orderKey = 'nextfarm:marketplaceOrders';
+const orderKey = 'nextfarm:marketplaceOrders:v2';
 
 export const marketplaceProducts: MarketplaceProduct[] = [
   {
@@ -324,10 +324,22 @@ function BackButton({ href, label }: { href: string; label: string }) {
   );
 }
 
+function MarketplaceToast({ message }: { message: string }) {
+  return (
+    <div className="fixed right-5 top-16 z-[220] rounded-lg border border-[#86efac] bg-white px-4 py-3 text-sm font-bold text-[#15803d] shadow-md">
+      <span className="inline-flex items-center gap-2">
+        <Check size={16} />
+        {message}
+      </span>
+    </div>
+  );
+}
+
 export function MarketplacePage() {
   const router = useRouter();
   const { add } = useCart();
   const [query, setQuery] = useState('');
+  const [toast, setToast] = useState('');
   const [category, setCategory] = useState('Tất cả');
   const categories = ['Tất cả', 'Phân bón', 'Thuốc BVTV', 'Giống cây trồng', 'Vật tư khác'];
   const products = useMemo(
@@ -340,8 +352,15 @@ export function MarketplacePage() {
     [category, query],
   );
 
+  function notifyAdded(product: MarketplaceProduct, quantity = 1) {
+    add(product.id, quantity);
+    setToast(`Đã thêm ${product.name} vào giỏ hàng`);
+    window.setTimeout(() => setToast(''), 1800);
+  }
+
   return (
     <section className="min-h-[calc(100vh-45px)] bg-[#f8fafc] p-3 text-[#0f172a]">
+      {toast ? <MarketplaceToast message={toast} /> : null}
       <div className="rounded-lg border border-[#a7f3d0] bg-gradient-to-r from-[#ecfdf5] to-[#eff6ff] p-4">
         <div className="flex items-start justify-between gap-4">
           <div>
@@ -414,7 +433,7 @@ export function MarketplacePage() {
                 <button
                   aria-label="Thêm vào giỏ"
                   className="flex h-9 w-10 items-center justify-center rounded-md border border-[#dbe3dc] bg-white hover:bg-[#f8fafc]"
-                  onClick={() => add(product.id)}
+                  onClick={() => notifyAdded(product)}
                   type="button"
                 >
                   <ShoppingCart size={16} />
@@ -432,8 +451,15 @@ export function MarketplaceProductPage({ productId }: { productId: string }) {
   const router = useRouter();
   const { add, setCart } = useCart();
   const [quantity, setQuantity] = useState(1);
+  const [toast, setToast] = useState('');
   const product = marketplaceProducts.find((item) => item.id === productId) ?? marketplaceProducts[0];
   const subtotal = product.price * quantity;
+
+  function addToCart() {
+    add(product.id, quantity);
+    setToast(`Đã thêm ${product.name} vào giỏ hàng`);
+    window.setTimeout(() => setToast(''), 1800);
+  }
 
   function buyNow() {
     setCart([{ productId: product.id, quantity }]);
@@ -442,6 +468,7 @@ export function MarketplaceProductPage({ productId }: { productId: string }) {
 
   return (
     <section className="min-h-[calc(100vh-45px)] bg-[#f8fafc] p-3 text-[#0f172a]">
+      {toast ? <MarketplaceToast message={toast} /> : null}
       <BackButton href="/marketplace/" label="Quay lại Marketplace" />
       <div className="mt-3 rounded-lg border border-[#dbe3dc] bg-white">
         <div className="grid gap-5 p-4 lg:grid-cols-2">
@@ -484,7 +511,7 @@ export function MarketplaceProductPage({ productId }: { productId: string }) {
               <strong className="text-2xl text-[#159447]">{formatMoney(subtotal)}</strong>
             </div>
             <div className="mt-4 grid grid-cols-2 gap-2">
-              <button className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[#dbe3dc] bg-white text-sm font-bold" onClick={() => add(product.id, quantity)} type="button">
+              <button className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[#dbe3dc] bg-white text-sm font-bold" onClick={addToCart} type="button">
                 <ShoppingCart size={15} />
                 Thêm vào giỏ
               </button>
